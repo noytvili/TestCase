@@ -4,28 +4,22 @@
 #include <iostream>
 using namespace std;
 
-//#include <assert.h>     /* assert */
-using namespace std;
-
-
-//template<typename T>
 class TestCase{
     private:
     string s; 
     int num_failure;  //number of fail tests
-    int counter ; //number of all test
+    int counter; //number of all test
     ostream cerr;
     
     public:
-
     TestCase(string s, ostream& cerr);
     void print(); //  מדפיסה את תוצאות הבדיקה - כמה בדיקות עברו ונכשלו.
 
     template <typename T> TestCase& check_equal(T a, T b){
         counter++;
         if(a != b){
-          cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
-          num_failure++;
+            cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
+            num_failure++;
         }
         return *this;
     }
