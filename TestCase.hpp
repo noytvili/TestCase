@@ -18,13 +18,11 @@ class TestCase{
     template <typename T> TestCase& check_equal(T a, T b){
            counter++;
 
-        if(a == b){
-   
-        }
-        else{
-              cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
+        if(a != b){
+                 cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
             num_failure++;
         }
+
         return *this;
     }
     
