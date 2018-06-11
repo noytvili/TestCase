@@ -8,7 +8,6 @@ TestCase::TestCase(string s1, ostream& cerr) : cerr(cerr.rdbuf()){//constructor
 }
 
 void TestCase::print(){
-    int sum = counter-num_failure;
-    cerr << s << ": " << num_failure << " failed, " << sum << " passed, " << counter << " total." << endl;
+    cerr << s << ": " << num_failure << " failed, " << counter-num_failure << " passed, " << counter << " total." << endl;
     cerr << "---" << endl;
 }
