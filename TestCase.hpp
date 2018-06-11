@@ -16,10 +16,14 @@ class TestCase{
     void print(); //  מדפיסה את תוצאות הבדיקה - כמה בדיקות עברו ונכשלו.
 
     template <typename T> TestCase& check_equal(T a, T b){
+        
+        if(a == b){
         counter++;
-        if(a != b){
-            cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
+        }
+        else{
+              cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
             num_failure++;
+            counter++;
         }
         return *this;
     }
