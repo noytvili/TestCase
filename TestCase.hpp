@@ -50,6 +50,7 @@ class TestCase{
         if(ans != b){
            cerr << s << ": Failure in test #" << counter << ": Function should return " << b << " but returned " << ans << "!" << endl;
             num_failure++;
+        }
         return *this;
     }
 };
