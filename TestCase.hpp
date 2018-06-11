@@ -23,6 +23,8 @@ class TestCase{
          else {
              cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
             num_failure++;
+                        counter++;  
+
         }
 
         return *this;
