@@ -16,14 +16,14 @@ class TestCase{
     void print(); //  מדפיסה את תוצאות הבדיקה - כמה בדיקות עברו ונכשלו.
 
     template <typename T> TestCase& check_equal(T a, T b){
-        
+           counter++;
+
         if(a == b){
-        counter++;
+   
         }
         else{
               cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
             num_failure++;
-            counter++;
         }
         return *this;
     }
@@ -48,7 +48,7 @@ class TestCase{
         return *this;    
     }
     
-    template <typename T,typename function> TestCase& check_function(function f ,T a, const int b){
+       template <typename T,typename function,typename T2> TestCase& check_function(function f ,T a, T2 b){
         counter++;
         int ans = f(a);
         if(ans != b){
