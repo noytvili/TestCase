@@ -4,33 +4,41 @@
 #include <iostream>
 using namespace std;
 
+//#include <assert.h>     /* assert */
+using namespace std;
+
+
+//template<typename T>
 class TestCase{
     private:
     string s; 
     int num_failure;  //number of fail tests
-    int counter; //number of all test
+    int counter ; //number of all test
     ostream cerr;
     
     public:
+
     TestCase(string s, ostream& cerr);
     void print(); //  מדפיסה את תוצאות הבדיקה - כמה בדיקות עברו ונכשלו.
 
+
     template <typename T> TestCase& check_equal(T a, T b){
-        counter++;  
+        counter++;
         if(a == b){
-         }
-         else {
-            cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
-            num_failure++;
+        }
+        else{
+          cerr << s << ": Failure in test #" <<  counter << ": " << a << " should equal " << b << "!" << endl;
+          num_failure++;
         }
         return *this;
     }
     
     template <typename T> TestCase& check_different(T a, T b){
         counter++;
-        if(a == b){
-            cerr << s << ": Failure in test #" <<  counter << ": " << a << " should not equal " << b << "!" << endl;
-            num_failure++;
+        if(a != b){
+        }
+        else{
+            cerr << s << ": Failure in test #" <<  counter << ": " << a << " should differ than " << b << "!" << endl;          num_failure++;
         }
         return *this;
     }
@@ -40,13 +48,13 @@ class TestCase{
         ostringstream new_os;
         new_os << a;
         if(new_os.str() != s1){
-          cerr << s << ": Failure in test #" << counter << ": string value should be " << s1 << " but is " << a << endl;
+               cerr << s << ": Failure in test #" << counter << ": string value should be " << a << " but is " << new_os.str() << "!" << endl;
           num_failure++;
         }
         return *this;    
     }
     
-       template <typename T,typename function> TestCase& check_function(function f ,T a, const int b){
+    template <typename T, typename function> TestCase& check_function(function f ,T a, const int b){
         counter++;
         int ans = f(a);
         if(ans != b){
